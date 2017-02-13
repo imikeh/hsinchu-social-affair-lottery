@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta property="og:title" content="&#x5149;&#x9ede;&#x7dda;&#x4e0a;&#x62bd;&#x734e;&#x7a0b;&#x5f0f;" />
+  <meta property="og:type" content="game" />
+  <meta property="og:url" content="https://github.com/mikemike07" />
+  <meta property="og:site_name" content="&#x5149;&#x9ede;&#x7dda;&#x4e0a;&#x62bd;&#x734e;&#x7a0b;&#x5f0f;" />
+  <meta property="fb:admins" content="1015000982" />
+
+  <title>社會處春酒抽獎</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+  <link rel="stylesheet" type="text/css" href="normalize.css">
+  <link rel="stylesheet" type="text/css" href="admin.css">
+  <script language="JavaScript" src="_u8_func.js"></script>
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=156308041177509";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  <table width="1200" height="50"  border="0" cellspacing="0" cellpadding="3" align="center" bgcolor="#eeeeee" >
+  <tr height="55">
+    <td width="300" align="left">
+    <div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="250" data-show-faces="true" data-action="like"></div>    
+    </td>
+    
+    <td width="600" align="center">
+      <span style="color:#064ECC;font-size:30px;">【社會處春酒抽獎】</span>
+    </td>
+
+    <td width="" align="right">
+    <!--a href="index.asp" ><img src="logo.gif" border="0" align="right"></a--></td>
+  </tr>
+  </table>
+
+<script>
+String.prototype.trim = function() { 
+  return this.replace(/(^\s*)|(\s*$)/g, ""); 
+} 
+
+function form_check(){
+    return false;
+}
+
+function chg_x1(){
+  var f = document.form1;
+  var v = f.lu_x1.value.trim();
+  var ary = v.split('\n');
+  f.lu_c1.value = ary.length;
+}
+
+function reset(){
+  var f = document.form1;
+  f.lu_x2.value = '';
+}
+
+function gen(){
+  var f = document.form1;
+  var s = prompt('請輸入抽獎人數',100);
+  var tx ='';
+  if( chk_number(s) == true ){
+    for(i=1;i<=s;i++){
+      tx += (i+'\r\n');
+    }
+    f.lu_x1.value = tx;
+    chg_x1();
+  }
+}
+
+
+var T1;
+var bb = false;
+
+function lucky(){
+  var f = document.form1;
+  if( chk_number(f.lu_c2.value) == false ){
+    alert('中獎人數格式錯誤');
+    f.lu_c2.focus();
+    return false;
+  }
+  
+  var v = f.lu_x1.value.trim();
+  var regex=/\n\s*\n/g;
+  v = v.replace(regex,'\n');
+  f.lu_x1.value = v;
+  if (v == ''){
+    alert('抽獎欄格式錯誤');
+    f.lu_x1.focus();
+    return;
+  }
+  
+  if(confirm("確定開始進行抽獎嗎?")==true){
+    bb = false;
+    window.setTimeout('lucky2()',2000);
+    window.setTimeout('Lottery()',10);
+  }
+}
+
+function Lottery() { 
+  if(bb == false){
+    var f = document.form1;
+    var Nos = Math.round(Math.random() * (99999) + 13); 
+    f.lu_x2.value = Nos; 
+    T1 = window.setTimeout('Lottery()', 10); 
+  }
+} 
+
+function lucky2(){
+  bb = true;
+  window.clearTimeout(T1);
+  var f = document.form1;
+  f.lu_x2.value = '';
+
+  var v = f.lu_x1.value.trim();
+  var regex=/\n\s*\n/g;
+  v = v.replace(regex,'\n');
+  
+  if (v == ''){
+    alert(0);
+  }
+  
+  f.lu_x1.value = v;
+  
+  var ary = v.split('\n');
+  f.lu_c1.value = ary.length;
+
+  var c1 = parseInt(f.lu_c1.value);
+  var c2 = parseInt(f.lu_c2.value);
+  var c3 = c2;
+  if(c3 > c1){c3 = c1}
+
+  for(var i=0; i < c3 ;i++){
+    var r = sp_random(0,c1-1);
+    var t = ary[i];
+    ary[i] = ary[r];
+    ary[r] = t;
+  }
+  
+  var res='';
+  for(var i=0; i < c3 ;i++){
+    res += ary[i] + '\n';
+  }
+  f.lu_x2.value = res;
+  alert('本次抽獎人數：'+ c1 + "人，預計抽出："+ c2 + "人，實際抽出"+ c3 +"人。");
+  document.getElementById("msg2").innerHTML='';
+}
+  function note_toggle(){
+    var d = document.getElementById("note").style.display ;
+    if(d=='none'){
+      document.getElementById("note").style.display = '';
+    }else{
+      document.getElementById("note").style.display = 'none';
+    }
+  }
+</script>
+
+<div class="msg"></div>
+
+<form name="form1" id="form1" method="post" action="http://lab.sp88.com.tw/luckydraw/admin_lu_edit2.asp" onsubmit="return form_check();"  >
+
+<table width="98%" border="0" cellspacing="10" cellpadding="0" align="center" bgcolor="#dddddd">
+  <tr height="30">
+    <td><div class="box2">抽獎人數：</div><input type="text" name="lu_c1" id="lu_c1" value="0" size="5"  class="input50" readonly="readoldy" ></td>
+    <td><div class="box2">中獎人數：</div><input type="text" name="lu_c2" id="lu_c2" value="3" size="5"  class="input50" ></td>
+  </tr>
+</table>
+
+<table width="98%"  border="0" cellspacing="10" cellpadding="0" align="center" bgcolor="#dddddd">
+  <tr >
+    <td width="50%">
+      <div class="box2" style="margin-bottom:5px" >抽獎欄：</div>
+      <input type="hidden" name="lu_sn" value="">
+      <textarea wrap="off" style="width:98%;height:350px;" id="lu_x1" name="lu_x1" onchange="chg_x1()" onBlur="chg_x1()" onKeyUp="chg_x1()"></textarea>
+    </td>
+    <td width="50%">
+      <div class="box2" style="margin-bottom:5px">中獎欄：<span id="msg2"></span></div>
+      <textarea wrap="off" style="width:98%;height:350px;" id="lu_x2" name="lu_x2"></textarea>
+    </td>
+  </tr>
+
+  <tr height="20" >
+    <td align="center">
+      <input name="bt1" type="button" class="btn_blue" value=" 抽    獎 " onclick="lucky()">
+    </td>
+    <td align="center">
+      <input name="bt2" type="button" class="btn_red" value=" 重    設 " onclick="reset()">
+    </td>
+  </tr>
+  <tr>
+    <td>
+    </td>
+    <td></td>
+  </tr>
+</table>
+
+</form>
+
+</body>
+</html>
+<center>
+    </script>
+
+</center>
