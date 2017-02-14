@@ -99,7 +99,7 @@ function lucky(){
 function Lottery() { 
   if(bb == false){
     var f = document.form1;
-    var Nos = Math.round(Math.random() * (99999) + 13); 
+    var Nos = Math.round(Math.random() * (99999) - 1); 
     f.lu_x2.value = Nos; 
     T1 = window.setTimeout('Lottery()', 10); 
   }
