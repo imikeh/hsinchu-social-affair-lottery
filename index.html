@@ -14,16 +14,17 @@
   <link rel="stylesheet" type="text/css" href="admin.css">
   <script language="JavaScript" src="_u8_func.js"></script>
 </head>
+
 <body>
- 
-  <table width="1200" height="50"  border="0" cellspacing="0" cellpadding="3" align="center" bgcolor="#eeeeee" >
+  <body background="pic.jpg">
+  <table width="1200" height="50"  border="0" cellspacing="0" cellpadding="3" align="center" >
   <tr height="55">
     <td width="300" align="left">
     <div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="250" data-show-faces="true" data-action="like"></div>    
     </td>
     
     <td width="600" align="center">
-      <span style="color:#064ECC;font-size:30px;">【社會處春酒抽獎】</span>
+      <span style="color:#EA0000;font-size:65px;">【社會處春酒抽獎】</span>
     </td>
 
     <td width="" align="right">
@@ -156,23 +157,23 @@ function lucky2(){
 
 <form name="form1" id="form1" method="post" action="http://lab.sp88.com.tw/luckydraw/admin_lu_edit2.asp" onsubmit="return form_check();"  >
 
-<table width="98%" border="0" cellspacing="10" cellpadding="0" align="center" bgcolor="#dddddd">
+<table width="98%" border="0" cellspacing="10" cellpadding="0" align="center" ">
   <tr height="30">
     <td><div class="box2">抽獎人數：</div><input type="text" name="lu_c1" id="lu_c1" value="0" size="5"  class="input50" readonly="readoldy" ></td>
     <td><div class="box2">中獎人數：</div><input type="text" name="lu_c2" id="lu_c2" value="3" size="5"  class="input50" ></td>
   </tr>
 </table>
 
-<table width="98%"  border="0" cellspacing="10" cellpadding="0" align="center" bgcolor="#dddddd">
+<table width="98%"  border="0" cellspacing="10" cellpadding="0" align="center" ">
   <tr >
     <td width="50%">
-      <div class="box2" style="margin-bottom:5px" >抽獎欄：</div>
+      <div class="box2" style="margin-bottom:10px;" >抽獎欄：</div>
       <input type="hidden" name="lu_sn" value="">
-      <textarea wrap="off" style="width:98%;height:350px;" id="lu_x1" name="lu_x1" onchange="chg_x1()" onBlur="chg_x1()" onKeyUp="chg_x1()"></textarea>
+      <textarea wrap="off" style="width:98%;height:350px;font-size:20px" id="lu_x1" name="lu_x1" onchange="chg_x1()" onBlur="chg_x1()" onKeyUp="chg_x1()"></textarea>
     </td>
     <td width="50%">
-      <div class="box2" style="margin-bottom:5px">中獎欄：<span id="msg2"></span></div>
-      <textarea wrap="off" style="width:98%;height:350px;" id="lu_x2" name="lu_x2"></textarea>
+      <div class="box2" style="margin-bottom:10px">中獎欄：<span id="msg2"></span></div>
+      <textarea wrap="off" style="width:98%;height:350px;font-size:40px;color:blue" id="lu_x2" name="lu_x2"></textarea>
     </td>
   </tr>
 
